@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 
@@ -174,12 +175,12 @@ const ServicesPage = () => {
             <h2 className="font-serif italic text-4xl lg:text-5xl mb-12">
               "Every room has a story. Let us write yours."
             </h2>
-            <a 
-              href="#contact" 
+            <Link 
+              to="/contact" 
               className="inline-flex items-center gap-4 text-sm tracking-widest uppercase font-medium border border-white px-8 py-4 hover:bg-white hover:text-charcoal transition-colors duration-300 font-sans"
             >
               Start a Project <ArrowRight size={16} />
-            </a>
+            </Link>
           </FadeUp>
         </div>
       </section>

@@ -1,8 +1,93 @@
+/*
+================================================================================
+FULL AUDIT TASK: HomePage.tsx
+================================================================================
+
+1. COMPONENT STRUCTURE:
+   - FadeUp: Reusable animation wrapper component using motion.div.
+   - Hero: Full-bleed cinematic carousel with crossfading images.
+   - BrandIntro: Studio ethos and introductory text.
+   - Services: Bento-grid style disciplines overview.
+   - FeaturedProject: Highlighted project with large image and description.
+   - Projects: Masonry grid of recent works.
+   - Process: Step-by-step methodology with alternating image/text layout.
+   - Materials: Tactile exploration with overlapping images.
+   - Testimonials: Client quote and image.
+   - Blog: Journal entries with a featured post and smaller posts.
+   - CTA: Call to action for inquiries.
+   - Contact: Contact form and studio details.
+   - HomePage: Main wrapper component composing all the above sections.
+
+2. CONTENT ANALYSIS:
+   - Hero:
+     - Text: "The Viraj Interiors", "Designing the Unseen.", "Curating the soul of the space through texture, light, and proportion.", "Explore Portfolio", "Crafting environments that breathe."
+     - Images: 10 Unsplash interior images (shuffled).
+     - Links: `/work` (Explore Portfolio).
+   - BrandIntro:
+     - Text: "The Ethos", "We believe that space is the ultimate luxury. Our approach is rooted in the subtle balance between raw materiality and refined elegance, creating environments that breathe."
+   - Services:
+     - Text: "Our Disciplines", "Architecture", "Structural integrity meets poetic form. We design from the ground up.", "02", "Interior Design", "Curating the soul of the space through texture, light, and proportion.", "Custom Furniture", "Bespoke pieces tailored to the exact dimensions of your life.", "Art & Styling", "The final layer of narrative, sourced from global galleries and artisans."
+     - Images: 4 Unsplash seed images (architecture, furniture, styling).
+   - FeaturedProject:
+     - Text: "01", "Featured Project", "The Glass Pavilion", "Set against the rugged coastline, this residence blurs the boundary between shelter and nature. A study in transparency and restraint.", "View Project"
+     - Images: 1 Unsplash seed image (featured-project).
+     - Links: `/work` (View Project).
+   - Projects:
+     - Text: "View", "Aura Residence", "The Minimalist", "Urban Loft", "Coastal Retreat", "Heritage Estate"
+     - Images: 5 Unsplash seed images (proj1-5).
+   - Process:
+     - Text: "01", "Discovery", "We begin by listening...", "02", "Concept", "Translating insights into spatial narratives..."
+     - Images: 2 Unsplash seed images (process1, process2).
+   - Materials:
+     - Text: "Raw Elegance", "A tactile exploration of the elements that form our foundation."
+     - Images: 3 Unsplash seed images (marble, wood, fabric).
+   - Testimonials:
+     - Text: `"`, "Viraj Interiors didn't just design our home; they uncovered its soul. The attention to detail is nothing short of obsessive.", "Elena & Marcus", "The Glass Pavilion"
+     - Images: 1 Unsplash seed image (testimonial-interior).
+   - Blog:
+     - Text: "Journal", "All", "Design", "Architecture", "Lifestyle", "Design • Oct 12", "The Psychology of Light in Minimalist Spaces", "Exploring how natural illumination shapes our emotional response to architecture.", "Architecture • Sep 28", "Sourcing Sustainable Materials"
+     - Images: 3 Unsplash seed images (journal-main, journal-1, journal-2).
+   - CTA:
+     - Text: "Ready to transform your space?", "Inquire Now"
+     - Links: `/contact` (Inquire Now).
+   - Contact:
+     - Text: "Get in Touch", "Studio", "124 Design District Copenhagen, Denmark 1050", "Inquiries", "hello@virajinteriors.com +45 33 12 34 56", "Your Name", "Email Address", "Project Details", "Submit Inquiry"
+
+3. DESIGN BREAKDOWN:
+   - Tailwind CSS: Extensive use of utility classes.
+   - Layout: `grid grid-cols-1 lg:grid-cols-12` is the primary layout pattern for asymmetrical/editorial sections. `columns-1 md:columns-2 lg:columns-3` used for masonry grids.
+   - Spacing: Generous padding `py-[120px]` to `py-[160px]`, `px-8 lg:px-16`. Max width `max-w-[1440px]`.
+   - Typography: `font-serif` (Playfair Display) for headings (`text-4xl` to `text-7xl`), `font-sans` (Inter) for body text and micro-labels. `tracking-[0.2em]` and `uppercase` for micro-labels.
+   - Colors: `bg-charcoal`, `text-white`, `bg-alabaster`, `text-charcoal`, `text-gray-400`, `text-gray-500`.
+
+4. ANIMATION BREAKDOWN:
+   - FadeUp: Uses `motion.div` with `initial={{ opacity: 0, y: 40 }}` and `whileInView={{ opacity: 1, y: 0 }}`. `viewport={{ once: true, margin: "-100px" }}` triggers when scrolling into view.
+   - Hero: Crossfade transition `duration: 1.2, ease: "easeInOut"` for images.
+   - Hover states: `group-hover:scale-105` on images for slow zoom (`duration-700`), `hover:text-gray-500` on links.
+
+5. RESPONSIVE DESIGN:
+   - Breakpoints: Primarily `lg` (1024px) for switching from 1 column to 12-column grid layouts. `md` used in masonry grids.
+   - Typography scales down on mobile (e.g., `text-5xl lg:text-[6rem]`).
+   - Padding scales down on mobile (`p-8 lg:p-16`).
+
+6. INTERACTIVE ELEMENTS:
+   - Hero Carousel: Auto-advances every 5s, clickable dot indicators.
+   - Links: `<Link>` components to `/work` and `/contact`.
+   - Form: Inputs with floating labels (`peer-focus`, `peer-placeholder-shown`).
+   - Buttons: Filter buttons in Blog section.
+
+7. IMPORTS & DEPENDENCIES:
+   - `React`, `useState`, `useEffect` from `react`.
+   - `motion` from `motion/react`.
+   - `ArrowRight` from `lucide-react`.
+   - `Link` from `react-router-dom`.
+================================================================================
+*/
+
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Instagram, Twitter, Linkedin } from 'lucide-react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Nav from './components/Nav';
+import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const FadeUp: React.FC<{ children?: React.ReactNode, delay?: number, className?: string }> = ({ children, delay = 0, className = "" }) => (
   <motion.div
@@ -48,7 +133,7 @@ const Hero = () => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [images.length, currentImage]);
+  }, [images.length]);
 
   if (images.length === 0) return <div className="h-screen w-full bg-charcoal" />;
 
@@ -60,15 +145,13 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: currentImage === index ? 1 : 0 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
-          className={`absolute inset-0 ${currentImage === index ? 'z-0' : '-z-10'}`}
-          aria-hidden={currentImage !== index}
+          className="absolute inset-0"
         >
           <img
             src={img}
             alt={`Interior ${index + 1}`}
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
-            {...(index === 0 ? { fetchPriority: 'high' } : { loading: 'lazy' })}
           />
         </motion.div>
       ))}
@@ -93,7 +176,7 @@ const Hero = () => {
           </p>
         </FadeUp>
         <FadeUp delay={0.6}>
-          <Link to="/portfolio" className="inline-flex items-center gap-4 text-sm tracking-widest uppercase font-medium border-b border-white pb-1 hover:text-white/70 hover:border-white/70 transition-colors w-fit">
+          <Link to="/work" className="inline-flex items-center gap-4 text-sm tracking-widest uppercase font-medium border-b border-white pb-1 hover:text-white/70 hover:border-white/70 transition-colors w-fit">
             Explore Portfolio <ArrowRight size={16} />
           </Link>
         </FadeUp>
@@ -200,9 +283,9 @@ const FeaturedProject = () => (
           <p className="text-gray-500 text-sm leading-relaxed mb-8">
             Set against the rugged coastline, this residence blurs the boundary between shelter and nature. A study in transparency and restraint.
           </p>
-          <a href="#" className="inline-flex items-center gap-4 text-sm tracking-widest uppercase font-medium border-b border-charcoal pb-1 hover:text-gray-500 hover:border-gray-500 transition-colors">
+          <Link to="/work" className="inline-flex items-center gap-4 text-sm tracking-widest uppercase font-medium border-b border-charcoal pb-1 hover:text-gray-500 hover:border-gray-500 transition-colors">
             View Project <ArrowRight size={16} />
-          </a>
+          </Link>
         </FadeUp>
       </div>
     </div>
@@ -377,9 +460,9 @@ const CTA = () => (
           <h2 className="font-serif text-5xl lg:text-7xl leading-[1.1] tracking-tight text-charcoal mb-12">
             Ready to transform<br />your space?
           </h2>
-          <a href="#contact" className="inline-flex items-center gap-4 text-lg tracking-widest uppercase font-medium border-b-2 border-charcoal pb-2 hover:text-gray-500 hover:border-gray-500 transition-colors">
+          <Link to="/contact" className="inline-flex items-center gap-4 text-lg tracking-widest uppercase font-medium border-b-2 border-charcoal pb-2 hover:text-gray-500 hover:border-gray-500 transition-colors">
             Inquire Now <ArrowRight size={20} />
-          </a>
+          </Link>
         </FadeUp>
       </div>
     </div>
@@ -430,47 +513,6 @@ const Contact = () => (
   </section>
 );
 
-const Footer = () => (
-  <footer className="bg-charcoal text-alabaster pt-[80px] pb-[40px] px-8 lg:px-16 overflow-hidden relative">
-    <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 mb-32 relative z-10">
-      <div className="lg:col-span-3">
-        <span className="font-serif text-4xl font-bold">V</span>
-      </div>
-      <div className="lg:col-span-3 flex flex-col gap-4">
-        <h4 className="text-xs tracking-widest uppercase text-gray-500 mb-2">Navigation</h4>
-        {['Home', 'Studio', 'Portfolio', 'Journal', 'Contact'].map(link => (
-          <a key={link} href={`#${link.toLowerCase()}`} className="text-sm hover:text-gray-400 transition-colors">{link}</a>
-        ))}
-      </div>
-      <div className="lg:col-span-2 flex flex-col gap-4">
-        <h4 className="text-xs tracking-widest uppercase text-gray-500 mb-2">Social</h4>
-        <a href="#" className="text-sm flex items-center gap-2 hover:text-gray-400 transition-colors"><Instagram size={16}/> Instagram</a>
-        <a href="#" className="text-sm flex items-center gap-2 hover:text-gray-400 transition-colors"><Twitter size={16}/> Twitter</a>
-        <a href="#" className="text-sm flex items-center gap-2 hover:text-gray-400 transition-colors"><Linkedin size={16}/> LinkedIn</a>
-      </div>
-      <div className="lg:col-span-4">
-        <h4 className="text-xs tracking-widest uppercase text-gray-500 mb-6">Newsletter</h4>
-        <div className="flex border-b border-gray-700 pb-2">
-          <input type="email" placeholder="Email Address" className="bg-transparent w-full text-sm focus:outline-none text-alabaster placeholder-gray-600" />
-          <button className="text-sm uppercase tracking-widest hover:text-gray-400 transition-colors">Subscribe</button>
-        </div>
-      </div>
-    </div>
-    
-    <div className="max-w-[1440px] mx-auto relative z-10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 border-t border-gray-800 pt-8">
-      <p>&copy; {new Date().getFullYear()} Viraj Interiors. All rights reserved.</p>
-      <div className="flex gap-6 mt-4 md:mt-0">
-        <a href="#" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
-        <a href="#" className="hover:text-gray-400 transition-colors">Terms of Service</a>
-      </div>
-    </div>
-
-    <div className="absolute bottom-[-10%] left-0 w-full text-center pointer-events-none select-none overflow-hidden leading-none">
-      <span className="font-serif text-[20vw] font-bold text-white/[0.03] tracking-tighter">VIRAJ</span>
-    </div>
-  </footer>
-);
-
 const HomePage = () => (
   <main>
     <Hero />
@@ -487,34 +529,4 @@ const HomePage = () => (
   </main>
 );
 
-// Placeholder imports for new pages (we will create them next)
-import ServicesPage from './pages/ServicesPage';
-import PortfolioPage from './pages/PortfolioPage';
-import AboutPage from './pages/AboutPage';
-import JournalPage from './pages/JournalPage';
-import ContactPage from './pages/ContactPage';
-
-// const ServicesPage = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">Services</h1></main>;
-// const PortfolioPage = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">Portfolio</h1></main>;
-// const AboutPage = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">About</h1></main>;
-// const JournalPage = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">Journal</h1></main>;
-// const ContactPage = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">Contact</h1></main>;
-
-export default function App() {
-  return (
-    <BrowserRouter>
-      <div className="relative bg-white min-h-screen font-sans text-charcoal selection:bg-charcoal selection:text-white">
-        <Nav />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/journal" element={<JournalPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
-        <Footer />
-      </div>
-    </BrowserRouter>
-  );
-}
+export default HomePage;

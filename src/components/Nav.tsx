@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Nav = () => {
   const navItems = [
-    { name: 'Work', path: '/portfolio' },
+    { name: 'Work', path: '/work' },
     { name: 'Services', path: '/services' },
-    { name: 'Studio', path: '/about' },
+    { name: 'Studio', path: '/studio' },
     { name: 'Journal', path: '/journal' },
     { name: 'Contact', path: '/contact' }
   ];
