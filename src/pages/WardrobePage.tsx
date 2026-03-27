@@ -157,26 +157,26 @@ const WardrobeContact = () => (
       
       <div className="lg:col-span-7">
         <FadeUp delay={0.2} className="bg-white text-charcoal p-10 lg:p-16">
-          <form className="space-y-8">
+          <form className="space-y-8" onSubmit={(e) => { e.preventDefault(); alert('Thank you for your request. We will get back to you shortly.'); }}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="relative">
-                <input type="text" id="w-name" className="w-full bg-transparent border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-charcoal transition-colors peer" placeholder=" " />
+                <input type="text" id="w-name" required className="w-full bg-transparent border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-charcoal transition-colors peer" placeholder=" " />
                 <label htmlFor="w-name" className="absolute left-0 top-3 text-sm text-gray-400 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-charcoal peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm">Full Name</label>
               </div>
               <div className="relative">
-                <input type="tel" id="w-phone" className="w-full bg-transparent border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-charcoal transition-colors peer" placeholder=" " />
+                <input type="tel" id="w-phone" required className="w-full bg-transparent border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-charcoal transition-colors peer" placeholder=" " />
                 <label htmlFor="w-phone" className="absolute left-0 top-3 text-sm text-gray-400 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-charcoal peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm">Phone Number</label>
               </div>
             </div>
             
             <div className="relative">
-              <input type="email" id="w-email" className="w-full bg-transparent border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-charcoal transition-colors peer" placeholder=" " />
+              <input type="email" id="w-email" required className="w-full bg-transparent border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-charcoal transition-colors peer" placeholder=" " />
               <label htmlFor="w-email" className="absolute left-0 top-3 text-sm text-gray-400 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-charcoal peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm">Email Address</label>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="relative">
-                <select id="w-type" defaultValue="" className="w-full bg-transparent border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-charcoal transition-colors text-charcoal appearance-none">
+                <select id="w-type" required defaultValue="" className="w-full bg-transparent border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-charcoal transition-colors text-charcoal appearance-none">
                   <option value="" disabled hidden>Project Type</option>
                   <option value="sliding">Sliding Door Wardrobe</option>
                   <option value="walk-in">Walk-in Wardrobe</option>
@@ -185,7 +185,7 @@ const WardrobeContact = () => (
                 </select>
               </div>
               <div className="relative">
-                <select id="w-budget" defaultValue="" className="w-full bg-transparent border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-charcoal transition-colors text-charcoal appearance-none">
+                <select id="w-budget" required defaultValue="" className="w-full bg-transparent border-b border-gray-300 py-3 text-sm focus:outline-none focus:border-charcoal transition-colors text-charcoal appearance-none">
                   <option value="" disabled hidden>Budget Range</option>
                   <option value="1-3">₹1L - ₹3L</option>
                   <option value="3-5">₹3L - ₹5L</option>
@@ -194,7 +194,7 @@ const WardrobeContact = () => (
               </div>
             </div>
             
-            <button type="button" className="bg-charcoal text-white w-full py-4 text-sm tracking-widest uppercase font-medium hover:bg-gray-800 transition-colors mt-4">
+            <button type="submit" className="bg-charcoal text-white w-full py-4 text-sm tracking-widest uppercase font-medium hover:bg-gray-800 transition-colors mt-4">
               Request Free Quote
             </button>
           </form>

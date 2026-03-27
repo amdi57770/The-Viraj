@@ -91,9 +91,9 @@ const WardrobeSection: React.FC<WardrobeSectionProps> = ({ isCompact = false, sh
           </div>
           <div className="mt-8 md:mt-0 flex flex-col items-end gap-4">
             {showCtaButton && (
-              <a href="#contact" className="bg-white text-charcoal px-8 py-4 text-sm tracking-widest uppercase font-medium hover:bg-gray-200 transition-colors">
+              <Link to="/contact" className="bg-white text-charcoal px-8 py-4 text-sm tracking-widest uppercase font-medium hover:bg-gray-200 transition-colors">
                 Get Free Quote
-              </a>
+              </Link>
             )}
             <Link to="/wardrobe" className="inline-flex items-center gap-2 text-sm tracking-widest uppercase font-medium border-b border-white/30 pb-1 hover:text-white/70 hover:border-white/70 transition-colors">
               Explore Complete Wardrobe Collection <ArrowRight size={16} className="text-accent" />

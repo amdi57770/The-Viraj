@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Instagram, Twitter, Linkedin } from 'lucide-react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
 import Nav from './components/Nav';
 import WardrobeSection from './components/WardrobeSection';
+import TestimonialSlider from './components/TestimonialSlider';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 const FadeUp: React.FC<{ children?: React.ReactNode, delay?: number, className?: string }> = ({ children, delay = 0, className = "" }) => (
   <motion.div
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-100px" }}
-    transition={{ duration: 0.6, delay, ease: [0.25, 1, 0.5, 1] }}
+    transition={{ duration: 0.8, delay, ease: [0.25, 1, 0.5, 1] }}
     className={className}
   >
     {children}
@@ -76,7 +85,7 @@ const Hero = () => {
 
       <div className="absolute bottom-0 left-0 w-full p-8 lg:p-16 flex flex-col justify-end z-10 text-white">
         <FadeUp>
-          <span className="text-xs tracking-[0.2em] uppercase font-semibold text-white/70 mb-3 block">
+          <span className="text-xs tracking-widest uppercase font-semibold text-white/70 mb-3 block">
             The Viraj Interiors
           </span>
         </FadeUp>
@@ -130,9 +139,9 @@ const BrandIntro = () => (
     <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
       <div className="lg:col-span-4 flex flex-col justify-between">
         <FadeUp>
-          <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">The Ethos</span>
+          <span className="text-xs tracking-widest uppercase font-semibold text-neutral-400 mb-3 block">The Ethos</span>
         </FadeUp>
-        <FadeUp delay={0.2} className="hidden lg:block h-32 w-[1px] bg-gray-300 mt-8"></FadeUp>
+        <FadeUp delay={0.2} className="hidden lg:block h-32 w-[1px] bg-neutral-300 mt-8"></FadeUp>
       </div>
       <div className="lg:col-span-8">
         <FadeUp delay={0.2}>
@@ -194,14 +203,14 @@ const FeaturedProject = () => (
       <div className="lg:col-span-4 relative">
         <FadeUp delay={0.2}>
           <div className="absolute -top-32 -left-16 text-[12rem] font-serif text-gray-50 leading-none -z-10 select-none hidden lg:block">01</div>
-          <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">Featured Project</span>
+          <span className="text-xs tracking-widest uppercase font-semibold text-neutral-400 mb-3 block">Featured Project</span>
           <h2 className="font-serif text-4xl lg:text-5xl mb-6">The Glass<br/>Pavilion</h2>
-          <p className="text-gray-500 text-sm leading-relaxed mb-8">
+          <p className="text-neutral-500 text-sm leading-relaxed mb-8">
             Set against the rugged coastline, this residence blurs the boundary between shelter and nature. A study in transparency and restraint.
           </p>
-          <a href="#" className="inline-flex items-center gap-4 text-sm tracking-widest uppercase font-medium border-b border-charcoal pb-1 hover:text-gray-500 hover:border-gray-500 transition-colors">
+          <Link to="/portfolio/the-glass-pavilion" className="inline-flex items-center gap-4 text-sm tracking-widest uppercase font-medium border-b border-charcoal pb-1 hover:text-neutral-500 hover:border-neutral-500 transition-colors">
             View Project <ArrowRight size={16} className="text-accent" />
-          </a>
+          </Link>
         </FadeUp>
       </div>
     </div>
@@ -220,21 +229,23 @@ const Projects = () => {
   return (
     <section className="py-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto">
       <FadeUp className="mb-16">
-        <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">Selected Works</span>
+        <span className="text-xs tracking-widest uppercase font-semibold text-neutral-400 mb-3 block">Selected Works</span>
         <h2 className="font-serif text-4xl lg:text-5xl">Spaces We Have Had the Privilege to Shape</h2>
       </FadeUp>
       <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
         {projects.map((p, i) => (
           <FadeUp key={i} delay={i * 0.1} className="break-inside-avoid relative group cursor-pointer">
-            <div className="overflow-hidden">
-              <img src={`https://picsum.photos/seed/${p.seed}/800/1000`} alt={p.title} className={`w-full ${p.aspect} object-cover transition-transform duration-700 group-hover:scale-105`} referrerPolicy="no-referrer" />
-            </div>
-            <div className="absolute inset-0 bg-charcoal/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-              <span className="bg-white text-charcoal px-6 py-3 text-sm tracking-widest uppercase font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">View</span>
-            </div>
-            <div className="mt-4">
-              <h3 className="font-serif text-xl">{p.title}</h3>
-            </div>
+            <Link to={`/portfolio/${p.title.toLowerCase().replace(/\s+/g, '-')}`} className="block">
+              <div className="overflow-hidden">
+                <img src={`https://picsum.photos/seed/${p.seed}/800/1000`} alt={p.title} className={`w-full ${p.aspect} object-cover transition-transform duration-700 group-hover:scale-105`} referrerPolicy="no-referrer" />
+              </div>
+              <div className="absolute inset-0 bg-charcoal/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span className="bg-white text-charcoal px-6 py-3 text-sm tracking-widest uppercase font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">View</span>
+              </div>
+              <div className="mt-4">
+                <h3 className="font-serif text-xl">{p.title}</h3>
+              </div>
+            </Link>
           </FadeUp>
         ))}
       </div>
@@ -245,7 +256,7 @@ const Projects = () => {
 const Process = () => (
   <section className="py-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto">
     <FadeUp className="mb-24 text-center">
-      <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">How We Work</span>
+      <span className="text-xs tracking-widest uppercase font-semibold text-neutral-400 mb-3 block">How We Work</span>
       <h2 className="font-serif text-4xl lg:text-5xl">A Process as Considered as the Result</h2>
     </FadeUp>
     <div className="relative">
@@ -257,7 +268,7 @@ const Process = () => (
             <FadeUp>
               <span className="font-serif text-6xl text-accent block mb-4">01</span>
               <h3 className="font-serif text-3xl mb-4">Discovery</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">We begin by listening. Understanding your rituals, your aspirations, and the unique context of the site.</p>
+              <p className="text-neutral-500 text-sm leading-relaxed">We begin by listening. Understanding your rituals, your aspirations, and the unique context of the site.</p>
             </FadeUp>
           </div>
           <div className="lg:col-span-2 hidden lg:flex justify-center relative">
@@ -283,7 +294,7 @@ const Process = () => (
             <FadeUp>
               <span className="font-serif text-6xl text-accent block mb-4">02</span>
               <h3 className="font-serif text-3xl mb-4">Concept</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">Translating insights into spatial narratives. We explore spatial choreography & flow through sketches and models.</p>
+              <p className="text-neutral-500 text-sm leading-relaxed">Translating insights into spatial narratives. We explore spatial choreography & flow through sketches and models.</p>
             </FadeUp>
           </div>
         </div>
@@ -293,7 +304,7 @@ const Process = () => (
             <FadeUp>
               <span className="font-serif text-6xl text-accent block mb-4">03</span>
               <h3 className="font-serif text-3xl mb-4">Execution</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">Meticulous project management and collaboration with master craftsmen to bring tactile materiality & textural layering to life.</p>
+              <p className="text-neutral-500 text-sm leading-relaxed">Meticulous project management and collaboration with master craftsmen to bring tactile materiality & textural layering to life.</p>
             </FadeUp>
           </div>
           <div className="lg:col-span-2 hidden lg:flex justify-center relative">
@@ -317,9 +328,9 @@ const Process = () => (
           </div>
           <div className="lg:col-span-5 lg:pl-16 order-1 lg:order-3">
             <FadeUp>
-              <span className="font-serif text-6xl text-gray-200 block mb-4">04</span>
+              <span className="font-serif text-6xl text-neutral-200 block mb-4">04</span>
               <h3 className="font-serif text-3xl mb-4">Handover</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">The final layer of styling. Placing art, arranging furniture, and ensuring every detail is perfect before welcoming you home.</p>
+              <p className="text-neutral-500 text-sm leading-relaxed">The final layer of styling. Placing art, arranging furniture, and ensuring every detail is perfect before welcoming you home.</p>
             </FadeUp>
           </div>
         </div>
@@ -333,7 +344,7 @@ const Materials = () => (
     <div className="max-w-[1440px] mx-auto">
       <FadeUp className="text-center mb-16">
         <h2 className="font-serif text-4xl lg:text-5xl">Raw Elegance</h2>
-        <p className="text-gray-500 mt-4 max-w-md mx-auto text-sm">A tactile exploration of the elements that form our foundation.</p>
+        <p className="text-neutral-500 mt-4 max-w-md mx-auto text-sm">A tactile exploration of the elements that form our foundation.</p>
       </FadeUp>
       
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
@@ -354,18 +365,18 @@ const Materials = () => (
 const Testimonials = () => (
   <section className="py-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto">
     <FadeUp className="mb-16">
-      <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">Client Voices</span>
+      <span className="text-xs tracking-widest uppercase font-semibold text-neutral-400 mb-3 block">Client Voices</span>
     </FadeUp>
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
       <div className="lg:col-span-5">
         <FadeUp>
           <p className="font-serif text-3xl lg:text-4xl leading-snug italic text-charcoal relative">
-            <span className="absolute -top-8 -left-6 text-6xl text-gray-200 font-sans">"</span>
+            <span className="absolute -top-8 -left-6 text-6xl text-neutral-200 font-sans">"</span>
             Viraj Interiors didn't just design our home; they uncovered its soul. The attention to detail is nothing short of obsessive.
           </p>
           <div className="mt-12">
             <p className="text-sm font-semibold uppercase tracking-widest">Elena & Marcus</p>
-            <p className="text-xs text-gray-400 mt-1">The Glass Pavilion</p>
+            <p className="text-xs text-neutral-400 mt-1">The Glass Pavilion</p>
           </div>
         </FadeUp>
       </div>
@@ -380,11 +391,11 @@ const Testimonials = () => (
 
 const Blog = () => (
   <section id="journal" className="py-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto">
-    <FadeUp className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-gray-200 pb-8">
+    <FadeUp className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-neutral-200 pb-8">
       <h2 className="font-serif text-4xl">Journal</h2>
       <div className="flex gap-6 mt-6 md:mt-0">
         {['All', 'Design', 'Architecture', 'Lifestyle'].map((filter, i) => (
-          <button key={filter} className={`text-sm tracking-widest uppercase ${i === 0 ? 'text-charcoal font-medium' : 'text-gray-400 hover:text-charcoal'} transition-colors`}>
+          <button key={filter} className={`text-sm tracking-widest uppercase ${i === 0 ? 'text-charcoal font-medium' : 'text-neutral-400 hover:text-charcoal'} transition-colors`}>
             {filter}
           </button>
         ))}
@@ -393,22 +404,26 @@ const Blog = () => (
 
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-[80px]">
       <FadeUp delay={0.1} className="lg:col-span-6 group cursor-pointer">
-        <div className="overflow-hidden mb-6">
-          <img src="https://picsum.photos/seed/journal-main/800/500" alt="Journal Featured" className="w-full aspect-[16/10] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
-        </div>
-        <span className="text-xs tracking-widest uppercase text-gray-400 mb-3 block">Design • Oct 12</span>
-        <h3 className="font-serif text-3xl mb-4 group-hover:text-gray-600 transition-colors">The Psychology of Light in Minimalist Spaces</h3>
-        <p className="text-gray-500 text-sm">Exploring how natural illumination shapes our emotional response to architecture.</p>
+        <Link to="/journal/the-psychology-of-light" className="block">
+          <div className="overflow-hidden mb-6">
+            <img src="https://picsum.photos/seed/journal-main/800/500" alt="Journal Featured" className="w-full aspect-[16/10] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
+          </div>
+          <span className="text-xs tracking-widest uppercase text-neutral-400 mb-3 block">Design • Oct 12</span>
+          <h3 className="font-serif text-3xl mb-4 group-hover:text-neutral-500 transition-colors">The Psychology of Light in Minimalist Spaces</h3>
+          <p className="text-neutral-500 text-sm">Exploring how natural illumination shapes our emotional response to architecture.</p>
+        </Link>
       </FadeUp>
       
       <div className="lg:col-span-6 grid grid-cols-1 md:grid-cols-2 gap-8">
         {[1, 2].map((item, i) => (
           <FadeUp key={item} delay={0.2 + (i * 0.1)} className="group cursor-pointer">
-            <div className="overflow-hidden mb-4">
-              <img src={`https://picsum.photos/seed/journal-${item}/400/300`} alt="Journal Post" className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
-            </div>
-            <span className="text-xs tracking-widest uppercase text-gray-400 mb-3 block">Architecture • Sep 28</span>
-            <h3 className="font-serif text-xl group-hover:text-gray-600 transition-colors">Sourcing Sustainable Materials</h3>
+            <Link to={`/journal/article-${item}`} className="block">
+              <div className="overflow-hidden mb-4">
+                <img src={`https://picsum.photos/seed/journal-${item}/400/300`} alt="Journal Post" className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
+              </div>
+              <span className="text-xs tracking-widest uppercase text-neutral-400 mb-3 block">Architecture • Sep 28</span>
+              <h3 className="font-serif text-xl group-hover:text-neutral-500 transition-colors">Sourcing Sustainable Materials</h3>
+            </Link>
           </FadeUp>
         ))}
       </div>
@@ -422,13 +437,13 @@ const CTA = () => (
       <div className="lg:col-span-3"></div>
       <div className="lg:col-span-9">
         <FadeUp>
-          <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">Let's Begin</span>
+          <span className="text-xs tracking-widest uppercase font-semibold text-neutral-400 mb-3 block">Let's Begin</span>
           <h2 className="font-serif text-5xl lg:text-7xl leading-[1.1] tracking-tight text-charcoal mb-12">
             Ready to transform<br />your space?
           </h2>
-          <a href="#contact" className="inline-flex items-center gap-4 text-lg tracking-widest uppercase font-medium border-b-2 border-charcoal pb-2 hover:text-gray-500 hover:border-gray-500 transition-colors">
+          <Link to="/contact" className="inline-flex items-center gap-4 text-lg tracking-widest uppercase font-medium border-b-2 border-charcoal pb-2 hover:text-neutral-500 hover:border-neutral-500 transition-colors">
             Inquire Now <ArrowRight size={20} className="text-accent" />
-          </a>
+          </Link>
         </FadeUp>
       </div>
     </div>
@@ -443,11 +458,11 @@ const Contact = () => (
           <h2 className="font-serif text-4xl mb-12">Get in Touch</h2>
           <div className="space-y-8">
             <div>
-              <h4 className="text-xs tracking-widest uppercase text-gray-400 mb-3">Studio</h4>
+              <h4 className="text-xs tracking-widest uppercase text-neutral-400 mb-3">Studio</h4>
               <p className="text-sm leading-relaxed">124 Design District<br/>Copenhagen, Denmark 1050</p>
             </div>
             <div>
-              <h4 className="text-xs tracking-widest uppercase text-gray-400 mb-3">Inquiries</h4>
+              <h4 className="text-xs tracking-widest uppercase text-neutral-400 mb-3">Inquiries</h4>
               <p className="text-sm">hello@virajinteriors.com<br/>+45 33 12 34 56</p>
             </div>
           </div>
@@ -458,18 +473,18 @@ const Contact = () => (
         <FadeUp delay={0.2}>
           <form className="space-y-12">
             <div className="relative">
-              <input type="text" id="name" className="w-full bg-transparent border-b border-gray-300 py-4 text-sm focus:outline-none focus:border-charcoal transition-colors peer" placeholder=" " />
-              <label htmlFor="name" className="absolute left-0 top-4 text-sm text-gray-400 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-charcoal peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm">Your Name</label>
+              <input type="text" id="name" className="w-full bg-transparent border-b border-neutral-300 py-4 text-sm focus:outline-none focus:border-charcoal transition-colors peer" placeholder=" " />
+              <label htmlFor="name" className="absolute left-0 top-4 text-sm text-neutral-400 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-charcoal peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm">Your Name</label>
             </div>
             <div className="relative">
-              <input type="email" id="email" className="w-full bg-transparent border-b border-gray-300 py-4 text-sm focus:outline-none focus:border-charcoal transition-colors peer" placeholder=" " />
-              <label htmlFor="email" className="absolute left-0 top-4 text-sm text-gray-400 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-charcoal peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm">Email Address</label>
+              <input type="email" id="email" className="w-full bg-transparent border-b border-neutral-300 py-4 text-sm focus:outline-none focus:border-charcoal transition-colors peer" placeholder=" " />
+              <label htmlFor="email" className="absolute left-0 top-4 text-sm text-neutral-400 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-charcoal peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm">Email Address</label>
             </div>
             <div className="relative">
-              <textarea id="message" rows={4} className="w-full bg-transparent border-b border-gray-300 py-4 text-sm focus:outline-none focus:border-charcoal transition-colors peer resize-none" placeholder=" "></textarea>
-              <label htmlFor="message" className="absolute left-0 top-4 text-sm text-gray-400 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-charcoal peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm">Project Details</label>
+              <textarea id="message" rows={4} className="w-full bg-transparent border-b border-neutral-300 py-4 text-sm focus:outline-none focus:border-charcoal transition-colors peer resize-none" placeholder=" "></textarea>
+              <label htmlFor="message" className="absolute left-0 top-4 text-sm text-neutral-400 transition-all peer-focus:-top-4 peer-focus:text-xs peer-focus:text-charcoal peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm">Project Details</label>
             </div>
-            <button type="button" className="text-sm tracking-widest uppercase font-medium border-b border-charcoal pb-1 hover:text-gray-500 hover:border-gray-500 transition-colors">
+            <button type="button" className="text-sm tracking-widest uppercase font-medium border-b border-charcoal pb-1 hover:text-neutral-500 hover:border-neutral-500 transition-colors">
               Submit Inquiry
             </button>
           </form>
@@ -486,35 +501,31 @@ const Footer = () => (
         <span className="font-serif text-4xl font-bold">V</span>
       </div>
       <div className="lg:col-span-3 flex flex-col gap-4">
-        <h4 className="text-xs tracking-widest uppercase text-gray-500 mb-2">Navigation</h4>
+        <h4 className="text-xs tracking-widest uppercase text-neutral-500 mb-2">Navigation</h4>
         {['Home', 'Studio', 'Portfolio', 'Wardrobes', 'Journal', 'Contact'].map(link => (
-          link === 'Wardrobes' ? (
-            <Link key={link} to="/wardrobe" className="text-sm hover:text-gray-400 transition-colors">{link}</Link>
-          ) : (
-            <a key={link} href={`#${link.toLowerCase()}`} className="text-sm hover:text-gray-400 transition-colors">{link}</a>
-          )
+          <Link key={link} to={link === 'Home' ? '/' : `/${link.toLowerCase()}`} className="text-sm hover:text-neutral-400 transition-colors">{link}</Link>
         ))}
       </div>
       <div className="lg:col-span-2 flex flex-col gap-4">
-        <h4 className="text-xs tracking-widest uppercase text-gray-500 mb-2">Social</h4>
-        <a href="#" className="text-sm flex items-center gap-2 hover:text-gray-400 transition-colors"><Instagram size={16}/> Instagram</a>
-        <a href="#" className="text-sm flex items-center gap-2 hover:text-gray-400 transition-colors"><Twitter size={16}/> Twitter</a>
-        <a href="#" className="text-sm flex items-center gap-2 hover:text-gray-400 transition-colors"><Linkedin size={16}/> LinkedIn</a>
+        <h4 className="text-xs tracking-widest uppercase text-neutral-500 mb-2">Social</h4>
+        <a href="#" className="text-sm flex items-center gap-2 hover:text-neutral-400 transition-colors"><Instagram size={16}/> Instagram</a>
+        <a href="#" className="text-sm flex items-center gap-2 hover:text-neutral-400 transition-colors"><Twitter size={16}/> Twitter</a>
+        <a href="#" className="text-sm flex items-center gap-2 hover:text-neutral-400 transition-colors"><Linkedin size={16}/> LinkedIn</a>
       </div>
       <div className="lg:col-span-4">
-        <h4 className="text-xs tracking-widest uppercase text-gray-500 mb-6">Newsletter</h4>
-        <div className="flex border-b border-gray-700 pb-2">
-          <input type="email" placeholder="Email Address" className="bg-transparent w-full text-sm focus:outline-none text-alabaster placeholder-gray-600" />
-          <button className="text-sm uppercase tracking-widest hover:text-gray-400 transition-colors">Subscribe</button>
+        <h4 className="text-xs tracking-widest uppercase text-neutral-500 mb-6">Newsletter</h4>
+        <div className="flex border-b border-neutral-700 pb-2">
+          <input type="email" placeholder="Email Address" className="bg-transparent w-full text-sm focus:outline-none text-alabaster placeholder-neutral-500" />
+          <button className="text-sm uppercase tracking-widest hover:text-neutral-400 transition-colors">Subscribe</button>
         </div>
       </div>
     </div>
     
-    <div className="max-w-[1440px] mx-auto relative z-10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 border-t border-gray-800 pt-8">
+    <div className="max-w-[1440px] mx-auto relative z-10 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-500 border-t border-neutral-800 pt-8">
       <p>&copy; {new Date().getFullYear()} Viraj Interiors. All rights reserved.</p>
       <div className="flex gap-6 mt-4 md:mt-0">
-        <a href="#" className="hover:text-gray-400 transition-colors">Privacy Policy</a>
-        <a href="#" className="hover:text-gray-400 transition-colors">Terms of Service</a>
+        <Link to="/privacy" className="hover:text-neutral-400 transition-colors">Privacy Policy</Link>
+        <Link to="/terms" className="hover:text-neutral-400 transition-colors">Terms of Service</Link>
       </div>
     </div>
 
@@ -534,7 +545,7 @@ const HomePage = () => (
     <Projects />
     <Process />
     <Materials />
-    <Testimonials />
+    <TestimonialSlider />
     <Blog />
     <CTA />
     <Contact />
@@ -549,26 +560,37 @@ import JournalPage from './pages/JournalPage';
 import ContactPage from './pages/ContactPage';
 import WardrobePage from './pages/WardrobePage';
 
-// const ServicesPage = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">Services</h1></main>;
-// const PortfolioPage = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">Portfolio</h1></main>;
-// const AboutPage = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">About</h1></main>;
-// const JournalPage = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">Journal</h1></main>;
-// const ContactPage = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">Contact</h1></main>;
+const ProjectDetail = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">Project Detail</h1></main>;
+const ServiceDetail = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">Service Detail</h1></main>;
+const ArticleDetail = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">Article Detail</h1></main>;
+const PrivacyPage = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">Privacy Policy</h1></main>;
+const TermsPage = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">Terms of Service</h1></main>;
+const NotFound = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto flex flex-col items-center justify-center"><h1 className="font-serif text-6xl mb-4">404</h1><p className="text-neutral-500 mb-8">Page not found</p><Link to="/" className="text-sm tracking-widest uppercase font-medium border-b border-charcoal pb-1 hover:text-neutral-500 hover:border-neutral-500 transition-colors">Return Home</Link></main>;
 
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="relative bg-white min-h-screen font-sans text-charcoal selection:bg-charcoal selection:text-white">
+      <ScrollToTop />
+      <div className="relative bg-white min-h-screen font-sans text-charcoal selection:bg-charcoal selection:text-white flex flex-col">
         <Nav />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/journal" element={<JournalPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/wardrobe" element={<WardrobePage />} />
-        </Routes>
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/:serviceId" element={<ServiceDetail />} />
+            <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/portfolio/:projectId" element={<ProjectDetail />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/journal" element={<JournalPage />} />
+            <Route path="/journal/:articleId" element={<ArticleDetail />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/wardrobe" element={<WardrobePage />} />
+            <Route path="/wardrobes" element={<WardrobePage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
         <Footer />
       </div>
     </BrowserRouter>

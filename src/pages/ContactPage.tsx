@@ -6,7 +6,7 @@ const FadeUp: React.FC<{ children?: React.ReactNode, delay?: number, className?:
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-100px" }}
-    transition={{ duration: 0.6, delay, ease: [0.25, 1, 0.5, 1] }}
+    transition={{ duration: 0.8, delay, ease: [0.25, 1, 0.5, 1] }}
     className={className}
   >
     {children}
@@ -51,13 +51,13 @@ const ContactPage = () => {
       <section className="bg-alabaster pt-[160px] pb-[120px] px-8 lg:px-16">
         <div className="max-w-[1440px] mx-auto text-center flex flex-col items-center">
           <FadeUp>
-            <span className="text-[10px] tracking-[0.2em] uppercase font-semibold text-gray-400 mb-8 block font-sans">
+            <span className="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 mb-8 block font-sans">
               Get In Touch
             </span>
             <h1 className="font-serif text-5xl lg:text-7xl leading-[1.1] tracking-tight text-charcoal mb-6">
               Let's Make Something Remarkable
             </h1>
-            <p className="text-gray-500 text-lg font-sans max-w-2xl mx-auto">
+            <p className="text-neutral-500 text-lg font-sans max-w-2xl mx-auto">
               We take on a limited number of projects each year. Tell us about yours.
             </p>
           </FadeUp>
@@ -72,7 +72,7 @@ const ContactPage = () => {
           <div className="lg:col-span-4 flex flex-col gap-12">
             <FadeUp delay={0.1}>
               <div className="mb-10">
-                <h4 className="text-[10px] tracking-[0.2em] uppercase font-semibold text-gray-400 mb-4 font-sans">
+                <h4 className="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 mb-4 font-sans">
                   Studio
                 </h4>
                 <p className="text-charcoal text-base leading-relaxed font-sans">
@@ -82,7 +82,7 @@ const ContactPage = () => {
               </div>
 
               <div className="mb-10">
-                <h4 className="text-[10px] tracking-[0.2em] uppercase font-semibold text-gray-400 mb-4 font-sans">
+                <h4 className="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 mb-4 font-sans">
                   Enquiries
                 </h4>
                 <p className="text-charcoal text-base leading-relaxed font-sans">
@@ -92,7 +92,7 @@ const ContactPage = () => {
               </div>
 
               <div className="mb-10">
-                <h4 className="text-[10px] tracking-[0.2em] uppercase font-semibold text-gray-400 mb-4 font-sans">
+                <h4 className="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 mb-4 font-sans">
                   Hours
                 </h4>
                 <p className="text-charcoal text-base leading-relaxed font-sans">
@@ -101,13 +101,13 @@ const ContactPage = () => {
               </div>
 
               <div>
-                <h4 className="text-[10px] tracking-[0.2em] uppercase font-semibold text-gray-400 mb-4 font-sans">
+                <h4 className="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 mb-4 font-sans">
                   Follow
                 </h4>
                 <div className="flex gap-4 text-charcoal text-base font-sans">
-                  <a href="#" className="hover:text-gray-500 transition-colors">Instagram</a>
-                  <span className="text-gray-300">|</span>
-                  <a href="#" className="hover:text-gray-500 transition-colors">Pinterest</a>
+                  <a href="#" className="hover:text-neutral-500 transition-colors">Instagram</a>
+                  <span className="text-neutral-300">|</span>
+                  <a href="#" className="hover:text-neutral-500 transition-colors">Pinterest</a>
                 </div>
               </div>
             </FadeUp>
@@ -119,7 +119,7 @@ const ContactPage = () => {
               <form onSubmit={handleSubmit} className="space-y-12">
                 
                 <div className="flex flex-col">
-                  <label htmlFor="fullName" className="text-[10px] tracking-[0.2em] uppercase font-semibold text-gray-400 mb-2 font-sans">
+                  <label htmlFor="fullName" className="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 mb-2 font-sans">
                     Full Name
                   </label>
                   <input 
@@ -129,12 +129,12 @@ const ContactPage = () => {
                     value={formData.fullName}
                     onChange={handleChange}
                     required
-                    className="w-full bg-transparent border-b border-gray-300 py-3 text-base text-charcoal focus:outline-none focus:border-charcoal transition-colors font-sans" 
+                    className="w-full bg-transparent border-b border-neutral-300 py-3 text-base text-charcoal focus:outline-none focus:border-charcoal transition-colors font-sans" 
                   />
                 </div>
 
                 <div className="flex flex-col">
-                  <label htmlFor="email" className="text-[10px] tracking-[0.2em] uppercase font-semibold text-gray-400 mb-2 font-sans">
+                  <label htmlFor="email" className="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 mb-2 font-sans">
                     Email
                   </label>
                   <input 
@@ -144,12 +144,12 @@ const ContactPage = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-transparent border-b border-gray-300 py-3 text-base text-charcoal focus:outline-none focus:border-charcoal transition-colors font-sans" 
+                    className="w-full bg-transparent border-b border-neutral-300 py-3 text-base text-charcoal focus:outline-none focus:border-charcoal transition-colors font-sans" 
                   />
                 </div>
 
                 <div className="flex flex-col">
-                  <label htmlFor="phone" className="text-[10px] tracking-[0.2em] uppercase font-semibold text-gray-400 mb-2 font-sans">
+                  <label htmlFor="phone" className="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 mb-2 font-sans">
                     Phone (Optional)
                   </label>
                   <input 
@@ -158,12 +158,12 @@ const ContactPage = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full bg-transparent border-b border-gray-300 py-3 text-base text-charcoal focus:outline-none focus:border-charcoal transition-colors font-sans" 
+                    className="w-full bg-transparent border-b border-neutral-300 py-3 text-base text-charcoal focus:outline-none focus:border-charcoal transition-colors font-sans" 
                   />
                 </div>
 
                 <div className="flex flex-col">
-                  <label htmlFor="projectType" className="text-[10px] tracking-[0.2em] uppercase font-semibold text-gray-400 mb-2 font-sans">
+                  <label htmlFor="projectType" className="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 mb-2 font-sans">
                     Project Type
                   </label>
                   <select 
@@ -172,7 +172,7 @@ const ContactPage = () => {
                     value={formData.projectType}
                     onChange={handleChange}
                     required
-                    className="w-full bg-transparent border-b border-gray-300 py-3 text-base text-charcoal focus:outline-none focus:border-charcoal transition-colors font-sans appearance-none rounded-none"
+                    className="w-full bg-transparent border-b border-neutral-300 py-3 text-base text-charcoal focus:outline-none focus:border-charcoal transition-colors font-sans appearance-none rounded-none"
                   >
                     <option value="" disabled>Select a project type</option>
                     <option value="Residential">Residential</option>
@@ -183,7 +183,7 @@ const ContactPage = () => {
                 </div>
 
                 <div className="flex flex-col">
-                  <label htmlFor="location" className="text-[10px] tracking-[0.2em] uppercase font-semibold text-gray-400 mb-2 font-sans">
+                  <label htmlFor="location" className="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 mb-2 font-sans">
                     Project Location
                   </label>
                   <input 
@@ -193,12 +193,12 @@ const ContactPage = () => {
                     value={formData.location}
                     onChange={handleChange}
                     required
-                    className="w-full bg-transparent border-b border-gray-300 py-3 text-base text-charcoal focus:outline-none focus:border-charcoal transition-colors font-sans" 
+                    className="w-full bg-transparent border-b border-neutral-300 py-3 text-base text-charcoal focus:outline-none focus:border-charcoal transition-colors font-sans" 
                   />
                 </div>
 
                 <div className="flex flex-col">
-                  <label htmlFor="vision" className="text-[10px] tracking-[0.2em] uppercase font-semibold text-gray-400 mb-2 font-sans">
+                  <label htmlFor="vision" className="text-[10px] tracking-widest uppercase font-semibold text-neutral-400 mb-2 font-sans">
                     Tell us about your vision
                   </label>
                   <textarea 
@@ -208,7 +208,7 @@ const ContactPage = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full bg-transparent border-b border-gray-300 py-3 text-base text-charcoal focus:outline-none focus:border-charcoal transition-colors font-sans resize-none" 
+                    className="w-full bg-transparent border-b border-neutral-300 py-3 text-base text-charcoal focus:outline-none focus:border-charcoal transition-colors font-sans resize-none" 
                   ></textarea>
                 </div>
 
