@@ -24,7 +24,7 @@ const WardrobeSection: React.FC<WardrobeSectionProps> = ({ isCompact = false, sh
   return (
     <section className={`${isCompact ? 'py-[120px]' : 'py-[160px]'} px-8 lg:px-16 max-w-[1440px] mx-auto`}>
       <FadeUp className="mb-16">
-        <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-6 block">Custom Wardrobe Delhi NCR</span>
+        <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">Custom Wardrobe Delhi NCR</span>
         <h2 className="font-serif text-4xl lg:text-5xl">Bespoke Storage Solutions</h2>
       </FadeUp>
 
@@ -39,8 +39,8 @@ const WardrobeSection: React.FC<WardrobeSectionProps> = ({ isCompact = false, sh
         </FadeUp>
 
         {/* Block 2: Waterproof & Termite-proof */}
-        <FadeUp delay={0.2} className="lg:col-span-4 bg-alabaster p-8 flex flex-col justify-between border border-gray-100">
-          <span className="text-xs tracking-widest uppercase text-gray-400">01</span>
+        <FadeUp delay={0.2} className="lg:col-span-4 bg-gradient-light p-8 flex flex-col justify-between border border-gray-100">
+          <span className="text-xs tracking-widest uppercase text-accent">01</span>
           <div>
             <h3 className="font-serif text-2xl mb-4 text-charcoal">Waterproof &<br/>Termite-Proof</h3>
             <p className="text-sm text-gray-500">Built with marine-grade materials to withstand the Delhi climate.</p>
@@ -48,8 +48,8 @@ const WardrobeSection: React.FC<WardrobeSectionProps> = ({ isCompact = false, sh
         </FadeUp>
 
         {/* Block 3: Hettich Hardware */}
-        <FadeUp delay={0.3} className="lg:col-span-4 bg-charcoal text-alabaster p-8 flex flex-col justify-between">
-          <span className="text-xs tracking-widest uppercase opacity-50">02</span>
+        <FadeUp delay={0.3} className="lg:col-span-4 bg-gradient-dark text-alabaster p-8 flex flex-col justify-between">
+          <span className="text-xs tracking-widest uppercase text-accent opacity-80">02</span>
           <div>
             <h3 className="font-serif text-2xl mb-4">Hettich Wardrobe Fittings</h3>
             <p className="text-sm opacity-70">German-engineered soft-close mechanisms for silent, seamless operation.</p>
@@ -66,8 +66,8 @@ const WardrobeSection: React.FC<WardrobeSectionProps> = ({ isCompact = false, sh
         </FadeUp>
 
         {/* Block 5: 10-Year Warranty */}
-        <FadeUp delay={0.5} className="lg:col-span-4 bg-alabaster p-8 flex flex-col justify-between border border-gray-100">
-          <span className="text-xs tracking-widest uppercase text-gray-400">03</span>
+        <FadeUp delay={0.5} className="lg:col-span-4 bg-gradient-light p-8 flex flex-col justify-between border border-gray-100">
+          <span className="text-xs tracking-widest uppercase text-accent">03</span>
           <div>
             <h3 className="font-serif text-2xl mb-4 text-charcoal">10-Year Warranty</h3>
             <p className="text-sm text-gray-500">Uncompromising quality backed by a decade of assurance.</p>
@@ -84,7 +84,7 @@ const WardrobeSection: React.FC<WardrobeSectionProps> = ({ isCompact = false, sh
         </FadeUp>
 
         {/* Block 7: CTA Area */}
-        <FadeUp delay={0.7} className="lg:col-span-12 bg-charcoal text-alabaster p-12 flex flex-col md:flex-row items-center justify-between mt-8">
+        <FadeUp delay={0.7} className="lg:col-span-12 bg-gradient-dark text-alabaster p-12 flex flex-col md:flex-row items-center justify-between mt-8">
           <div>
             <h3 className="font-serif text-3xl mb-2">Modular Wardrobe Manufacturer Delhi</h3>
             <p className="text-sm opacity-70 max-w-xl">From concept to installation in 45 days. Waterproof, termite-proof, and perfectly tailored to your space.</p>
@@ -96,7 +96,7 @@ const WardrobeSection: React.FC<WardrobeSectionProps> = ({ isCompact = false, sh
               </a>
             )}
             <Link to="/wardrobe" className="inline-flex items-center gap-2 text-sm tracking-widest uppercase font-medium border-b border-white/30 pb-1 hover:text-white/70 hover:border-white/70 transition-colors">
-              Explore Complete Wardrobe Collection <ArrowRight size={16} />
+              Explore Complete Wardrobe Collection <ArrowRight size={16} className="text-accent" />
             </Link>
           </div>
         </FadeUp>

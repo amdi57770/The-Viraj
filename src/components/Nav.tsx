@@ -34,7 +34,7 @@ const Nav = () => {
               className="relative flex flex-col items-center gap-1 text-sm tracking-widest uppercase text-gray-400 hover:text-charcoal transition-colors group"
             >
               <span>{item.name}</span>
-              <span className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${active === item.name ? 'bg-charcoal opacity-100 scale-100' : 'bg-charcoal opacity-0 scale-0 group-hover:opacity-30 group-hover:scale-100'}`}></span>
+              <span className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${active === item.name ? 'bg-accent opacity-100 scale-100' : 'bg-charcoal opacity-0 scale-0 group-hover:opacity-30 group-hover:scale-100'}`}></span>
             </Link>
           ))}
         </div>

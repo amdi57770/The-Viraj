@@ -53,10 +53,10 @@ const WardrobeHero = () => (
 );
 
 const WardrobeProcess = () => (
-  <section className="bg-alabaster py-[120px] px-8 lg:px-16">
+  <section className="bg-gradient-light py-[120px] px-8 lg:px-16">
     <div className="max-w-[1440px] mx-auto">
       <FadeUp className="mb-16 text-center">
-        <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-6 block">Our Process</span>
+        <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">Our Process</span>
         <h2 className="font-serif text-4xl lg:text-5xl">From Concept to Installation</h2>
       </FadeUp>
       
@@ -78,8 +78,8 @@ const WardrobeProcess = () => (
             desc: "Precision manufacturing followed by seamless, mess-free installation in your home."
           }
         ].map((item, i) => (
-          <FadeUp key={i} delay={i * 0.2} className="bg-white p-10 border border-gray-100">
-            <span className="font-serif text-5xl text-gray-200 block mb-6">{item.step}</span>
+          <FadeUp key={i} delay={i * 0.2} className="bg-gradient-light p-10 border border-gray-100">
+            <span className="font-serif text-5xl text-accent block mb-6">{item.step}</span>
             <h3 className="font-serif text-2xl mb-4 text-charcoal">{item.title}</h3>
             <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
           </FadeUp>
@@ -114,7 +114,7 @@ const FAQ = () => {
   return (
     <section className="py-[120px] px-8 lg:px-16 max-w-[800px] mx-auto">
       <FadeUp className="mb-16 text-center">
-        <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-6 block">Questions</span>
+        <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">Questions</span>
         <h2 className="font-serif text-4xl lg:text-5xl">Frequently Asked</h2>
       </FadeUp>
 
@@ -143,11 +143,11 @@ const FAQ = () => {
 };
 
 const WardrobeContact = () => (
-  <section id="wardrobe-contact" className="bg-charcoal text-alabaster py-[120px] px-8 lg:px-16">
+  <section id="wardrobe-contact" className="bg-gradient-dark text-alabaster py-[120px] px-8 lg:px-16">
     <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
       <div className="lg:col-span-5 flex flex-col justify-center">
         <FadeUp>
-          <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-6 block">Modular Wardrobe Manufacturer Delhi</span>
+          <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">Modular Wardrobe Manufacturer Delhi</span>
           <h2 className="font-serif text-4xl lg:text-5xl mb-8">Request a Free Quote</h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-12 max-w-md">
             Share your requirements with us. Our design experts will get back to you within 48 hours with a preliminary estimate.

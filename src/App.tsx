@@ -76,7 +76,7 @@ const Hero = () => {
 
       <div className="absolute bottom-0 left-0 w-full p-8 lg:p-16 flex flex-col justify-end z-10 text-white">
         <FadeUp>
-          <span className="text-xs tracking-[0.2em] uppercase font-semibold text-white/70 mb-4 block">
+          <span className="text-xs tracking-[0.2em] uppercase font-semibold text-white/70 mb-3 block">
             The Viraj Interiors
           </span>
         </FadeUp>
@@ -93,7 +93,7 @@ const Hero = () => {
         </FadeUp>
         <FadeUp delay={0.6}>
           <Link to="/portfolio" className="inline-flex items-center gap-4 text-sm tracking-widest uppercase font-medium border-b border-white pb-1 hover:text-white/70 hover:border-white/70 transition-colors w-fit">
-            Explore Portfolio <ArrowRight size={16} />
+            Explore Portfolio <ArrowRight size={16} className="text-accent" />
           </Link>
         </FadeUp>
 
@@ -126,11 +126,11 @@ const Hero = () => {
 };
 
 const BrandIntro = () => (
-  <section id="studio" className="bg-alabaster py-[160px] px-8 lg:px-16">
+  <section id="studio" className="bg-gradient-light py-[160px] px-8 lg:px-16">
     <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
       <div className="lg:col-span-4 flex flex-col justify-between">
         <FadeUp>
-          <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400">The Ethos</span>
+          <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">The Ethos</span>
         </FadeUp>
         <FadeUp delay={0.2} className="hidden lg:block h-32 w-[1px] bg-gray-300 mt-8"></FadeUp>
       </div>
@@ -158,24 +158,24 @@ const Services = () => (
           <p className="text-gray-200 text-sm max-w-md">Structural integrity meets poetic form. We design from the ground up.</p>
         </div>
       </FadeUp>
-      <FadeUp delay={0.2} className="lg:col-span-4 bg-charcoal text-alabaster p-8 flex flex-col justify-between">
+      <FadeUp delay={0.2} className="lg:col-span-4 bg-gradient-dark text-alabaster p-8 flex flex-col justify-between">
         <span className="text-xs tracking-widest uppercase opacity-50">02</span>
         <div>
           <h3 className="font-serif text-3xl mb-4">Interior<br/>Design</h3>
-          <p className="text-sm opacity-70">Curating the soul of the space through texture, light, and proportion.</p>
+          <p className="text-sm opacity-70">Curating spatial narratives through tactile materiality and bespoke craftsmanship.</p>
         </div>
       </FadeUp>
       <FadeUp delay={0.3} className="lg:col-span-6 relative group overflow-hidden">
-        <img src="https://picsum.photos/seed/furniture/800/600" alt="Custom Furniture" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
+        <img src="https://picsum.photos/seed/furniture/800/600" alt="Bespoke Joinery & Millwork" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
         <div className="absolute inset-0 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-          <h3 className="text-white font-serif text-3xl mb-2">Custom Furniture</h3>
+          <h3 className="text-white font-serif text-3xl mb-2">Bespoke Joinery & Millwork</h3>
           <p className="text-gray-200 text-sm max-w-md">Bespoke pieces tailored to the exact dimensions of your life.</p>
         </div>
       </FadeUp>
       <FadeUp delay={0.4} className="lg:col-span-6 relative group overflow-hidden">
-        <img src="https://picsum.photos/seed/styling/800/600" alt="Styling" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
+        <img src="https://picsum.photos/seed/styling/800/600" alt="Architectural & Ambient Illumination" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
         <div className="absolute inset-0 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
-          <h3 className="text-white font-serif text-3xl mb-2">Art & Styling</h3>
+          <h3 className="text-white font-serif text-3xl mb-2">Architectural & Ambient Illumination</h3>
           <p className="text-gray-200 text-sm max-w-md">The final layer of narrative, sourced from global galleries and artisans.</p>
         </div>
       </FadeUp>
@@ -194,13 +194,13 @@ const FeaturedProject = () => (
       <div className="lg:col-span-4 relative">
         <FadeUp delay={0.2}>
           <div className="absolute -top-32 -left-16 text-[12rem] font-serif text-gray-50 leading-none -z-10 select-none hidden lg:block">01</div>
-          <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-6 block">Featured Project</span>
+          <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">Featured Project</span>
           <h2 className="font-serif text-4xl lg:text-5xl mb-6">The Glass<br/>Pavilion</h2>
           <p className="text-gray-500 text-sm leading-relaxed mb-8">
             Set against the rugged coastline, this residence blurs the boundary between shelter and nature. A study in transparency and restraint.
           </p>
           <a href="#" className="inline-flex items-center gap-4 text-sm tracking-widest uppercase font-medium border-b border-charcoal pb-1 hover:text-gray-500 hover:border-gray-500 transition-colors">
-            View Project <ArrowRight size={16} />
+            View Project <ArrowRight size={16} className="text-accent" />
           </a>
         </FadeUp>
       </div>
@@ -220,7 +220,7 @@ const Projects = () => {
   return (
     <section className="py-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto">
       <FadeUp className="mb-16">
-        <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-6 block">Selected Works</span>
+        <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">Selected Works</span>
         <h2 className="font-serif text-4xl lg:text-5xl">Spaces We Have Had the Privilege to Shape</h2>
       </FadeUp>
       <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
@@ -245,7 +245,7 @@ const Projects = () => {
 const Process = () => (
   <section className="py-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto">
     <FadeUp className="mb-24 text-center">
-      <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-6 block">How We Work</span>
+      <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">How We Work</span>
       <h2 className="font-serif text-4xl lg:text-5xl">A Process as Considered as the Result</h2>
     </FadeUp>
     <div className="relative">
@@ -255,13 +255,13 @@ const Process = () => (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-5 text-left lg:text-right lg:pr-16">
             <FadeUp>
-              <span className="font-serif text-6xl text-gray-200 block mb-4">01</span>
+              <span className="font-serif text-6xl text-accent block mb-4">01</span>
               <h3 className="font-serif text-3xl mb-4">Discovery</h3>
               <p className="text-gray-500 text-sm leading-relaxed">We begin by listening. Understanding your rituals, your aspirations, and the unique context of the site.</p>
             </FadeUp>
           </div>
           <div className="lg:col-span-2 hidden lg:flex justify-center relative">
-            <div className="w-3 h-3 rounded-full bg-charcoal z-10"></div>
+            <div className="w-3 h-3 rounded-full bg-accent z-10"></div>
           </div>
           <div className="lg:col-span-5">
             <FadeUp delay={0.2}>
@@ -277,13 +277,13 @@ const Process = () => (
             </FadeUp>
           </div>
           <div className="lg:col-span-2 hidden lg:flex justify-center relative order-2">
-            <div className="w-3 h-3 rounded-full bg-charcoal z-10"></div>
+            <div className="w-3 h-3 rounded-full bg-accent z-10"></div>
           </div>
           <div className="lg:col-span-5 lg:pl-16 order-1 lg:order-3">
             <FadeUp>
-              <span className="font-serif text-6xl text-gray-200 block mb-4">02</span>
+              <span className="font-serif text-6xl text-accent block mb-4">02</span>
               <h3 className="font-serif text-3xl mb-4">Concept</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">Translating insights into spatial narratives. We explore materiality, light, and volume through sketches and models.</p>
+              <p className="text-gray-500 text-sm leading-relaxed">Translating insights into spatial narratives. We explore spatial choreography & flow through sketches and models.</p>
             </FadeUp>
           </div>
         </div>
@@ -291,13 +291,13 @@ const Process = () => (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-5 text-left lg:text-right lg:pr-16">
             <FadeUp>
-              <span className="font-serif text-6xl text-gray-200 block mb-4">03</span>
+              <span className="font-serif text-6xl text-accent block mb-4">03</span>
               <h3 className="font-serif text-3xl mb-4">Execution</h3>
-              <p className="text-gray-500 text-sm leading-relaxed">Meticulous project management and collaboration with master craftsmen to bring the vision to life.</p>
+              <p className="text-gray-500 text-sm leading-relaxed">Meticulous project management and collaboration with master craftsmen to bring tactile materiality & textural layering to life.</p>
             </FadeUp>
           </div>
           <div className="lg:col-span-2 hidden lg:flex justify-center relative">
-            <div className="w-3 h-3 rounded-full bg-charcoal z-10"></div>
+            <div className="w-3 h-3 rounded-full bg-accent z-10"></div>
           </div>
           <div className="lg:col-span-5">
             <FadeUp delay={0.2}>
@@ -329,7 +329,7 @@ const Process = () => (
 );
 
 const Materials = () => (
-  <section className="bg-alabaster py-[120px] px-8 lg:px-16 overflow-hidden">
+  <section className="bg-gradient-light py-[120px] px-8 lg:px-16 overflow-hidden">
     <div className="max-w-[1440px] mx-auto">
       <FadeUp className="text-center mb-16">
         <h2 className="font-serif text-4xl lg:text-5xl">Raw Elegance</h2>
@@ -354,7 +354,7 @@ const Materials = () => (
 const Testimonials = () => (
   <section className="py-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto">
     <FadeUp className="mb-16">
-      <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 block">Client Voices</span>
+      <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">Client Voices</span>
     </FadeUp>
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
       <div className="lg:col-span-5">
@@ -407,7 +407,7 @@ const Blog = () => (
             <div className="overflow-hidden mb-4">
               <img src={`https://picsum.photos/seed/journal-${item}/400/300`} alt="Journal Post" className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105" referrerPolicy="no-referrer" />
             </div>
-            <span className="text-xs tracking-widest uppercase text-gray-400 mb-2 block">Architecture • Sep 28</span>
+            <span className="text-xs tracking-widest uppercase text-gray-400 mb-3 block">Architecture • Sep 28</span>
             <h3 className="font-serif text-xl group-hover:text-gray-600 transition-colors">Sourcing Sustainable Materials</h3>
           </FadeUp>
         ))}
@@ -417,17 +417,17 @@ const Blog = () => (
 );
 
 const CTA = () => (
-  <section className="bg-alabaster py-[160px] px-8 lg:px-16">
+  <section className="bg-gradient-light py-[160px] px-8 lg:px-16">
     <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
       <div className="lg:col-span-3"></div>
       <div className="lg:col-span-9">
         <FadeUp>
-          <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-6 block">Let's Begin</span>
+          <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-3 block">Let's Begin</span>
           <h2 className="font-serif text-5xl lg:text-7xl leading-[1.1] tracking-tight text-charcoal mb-12">
             Ready to transform<br />your space?
           </h2>
           <a href="#contact" className="inline-flex items-center gap-4 text-lg tracking-widest uppercase font-medium border-b-2 border-charcoal pb-2 hover:text-gray-500 hover:border-gray-500 transition-colors">
-            Inquire Now <ArrowRight size={20} />
+            Inquire Now <ArrowRight size={20} className="text-accent" />
           </a>
         </FadeUp>
       </div>
@@ -443,11 +443,11 @@ const Contact = () => (
           <h2 className="font-serif text-4xl mb-12">Get in Touch</h2>
           <div className="space-y-8">
             <div>
-              <h4 className="text-xs tracking-widest uppercase text-gray-400 mb-2">Studio</h4>
+              <h4 className="text-xs tracking-widest uppercase text-gray-400 mb-3">Studio</h4>
               <p className="text-sm leading-relaxed">124 Design District<br/>Copenhagen, Denmark 1050</p>
             </div>
             <div>
-              <h4 className="text-xs tracking-widest uppercase text-gray-400 mb-2">Inquiries</h4>
+              <h4 className="text-xs tracking-widest uppercase text-gray-400 mb-3">Inquiries</h4>
               <p className="text-sm">hello@virajinteriors.com<br/>+45 33 12 34 56</p>
             </div>
           </div>
