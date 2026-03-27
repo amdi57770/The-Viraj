@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ArrowRight, Instagram, Twitter, Linkedin } from 'lucide-react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import Nav from './components/Nav';
+import WardrobeSection from './components/WardrobeSection';
 
 const FadeUp: React.FC<{ children?: React.ReactNode, delay?: number, className?: string }> = ({ children, delay = 0, className = "" }) => (
   <motion.div
@@ -220,6 +221,10 @@ const Projects = () => {
 
   return (
     <section className="py-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto">
+      <FadeUp className="mb-16">
+        <span className="text-[10px] tracking-[0.2em] uppercase font-sans text-gray-400 mb-6 block">Selected Works</span>
+        <h2 className="font-serif text-3xl lg:text-4xl text-charcoal">Spaces We Have Had the Privilege to Shape</h2>
+      </FadeUp>
       <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
         {projects.map((p, i) => (
           <FadeUp key={i} delay={i * 0.1} className="break-inside-avoid relative group cursor-pointer">
@@ -241,7 +246,11 @@ const Projects = () => {
 
 const Process = () => (
   <section className="py-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto relative">
-    <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gray-100 hidden lg:block -translate-x-1/2"></div>
+    <FadeUp className="text-center mb-20">
+      <span className="text-[10px] tracking-[0.2em] uppercase font-sans text-gray-400 mb-6 block">How We Work</span>
+      <h2 className="font-serif text-3xl lg:text-4xl text-charcoal">A Process as Considered as the Result</h2>
+    </FadeUp>
+    <div className="absolute left-1/2 top-[200px] bottom-0 w-[1px] bg-gray-100 hidden lg:block -translate-x-1/2"></div>
     
     <div className="space-y-[80px]">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -279,6 +288,24 @@ const Process = () => (
           </FadeUp>
         </div>
       </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="lg:col-span-5 text-left lg:text-right lg:pr-16">
+          <FadeUp>
+            <span className="font-serif text-6xl text-gray-200 block mb-4">03</span>
+            <h3 className="font-serif text-3xl mb-4">Craft</h3>
+            <p className="text-gray-500 text-sm leading-relaxed">The execution phase is where precision meets artistry. We collaborate with master artisans and builders to bring the design to life with uncompromising quality.</p>
+          </FadeUp>
+        </div>
+        <div className="lg:col-span-2 hidden lg:flex justify-center relative">
+          <div className="w-3 h-3 rounded-full bg-charcoal z-10"></div>
+        </div>
+        <div className="lg:col-span-5">
+          <FadeUp delay={0.2}>
+            <img src="https://picsum.photos/seed/process3/600/400" alt="Craft" className="w-full aspect-[3/2] object-cover" referrerPolicy="no-referrer" />
+          </FadeUp>
+        </div>
+      </div>
     </div>
   </section>
 );
@@ -308,6 +335,10 @@ const Materials = () => (
 
 const Testimonials = () => (
   <section className="py-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto">
+    <FadeUp className="mb-16">
+      <span className="text-[10px] tracking-[0.2em] uppercase font-sans text-gray-400 mb-6 block">Client Voices</span>
+      <h2 className="font-serif text-3xl lg:text-4xl text-charcoal">What Our Clients Say</h2>
+    </FadeUp>
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
       <div className="lg:col-span-5">
         <FadeUp>
@@ -374,8 +405,9 @@ const CTA = () => (
       <div className="lg:col-span-3"></div>
       <div className="lg:col-span-9">
         <FadeUp>
+          <span className="text-[10px] tracking-[0.2em] uppercase font-sans text-gray-400 mb-6 block">Let's Begin</span>
           <h2 className="font-serif text-5xl lg:text-7xl leading-[1.1] tracking-tight text-charcoal mb-12">
-            Ready to transform<br />your space?
+            Ready to Transform<br />Your Space?
           </h2>
           <a href="#contact" className="inline-flex items-center gap-4 text-lg tracking-widest uppercase font-medium border-b-2 border-charcoal pb-2 hover:text-gray-500 hover:border-gray-500 transition-colors">
             Inquire Now <ArrowRight size={20} />
@@ -476,6 +508,7 @@ const HomePage = () => (
     <Hero />
     <BrandIntro />
     <Services />
+    <WardrobeSection />
     <FeaturedProject />
     <Projects />
     <Process />
