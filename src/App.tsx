@@ -49,7 +49,7 @@ const Hero = () => {
       setCurrentImage((prev) => (prev + 1) % images.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, [images.length, currentImage]);
+  }, [images.length]);
 
   if (images.length === 0) return <div className="h-screen w-full bg-charcoal" />;
 
@@ -61,15 +61,13 @@ const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: currentImage === index ? 1 : 0 }}
           transition={{ duration: 1.2, ease: "easeInOut" }}
-          className={`absolute inset-0 ${currentImage === index ? 'z-0' : '-z-10'}`}
-          aria-hidden={currentImage !== index}
+          className="absolute inset-0"
         >
           <img
             src={img}
             alt={`Interior ${index + 1}`}
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
-            {...(index === 0 ? { fetchPriority: 'high' } : { loading: 'lazy' })}
           />
         </motion.div>
       ))}
@@ -222,8 +220,8 @@ const Projects = () => {
   return (
     <section className="py-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto">
       <FadeUp className="mb-16">
-        <span className="text-[10px] tracking-[0.2em] uppercase font-sans text-gray-400 mb-6 block">Selected Works</span>
-        <h2 className="font-serif text-3xl lg:text-4xl text-charcoal">Spaces We Have Had the Privilege to Shape</h2>
+        <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-6 block">Selected Works</span>
+        <h2 className="font-serif text-4xl lg:text-5xl">Spaces We Have Had the Privilege to Shape</h2>
       </FadeUp>
       <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
         {projects.map((p, i) => (
@@ -245,65 +243,85 @@ const Projects = () => {
 };
 
 const Process = () => (
-  <section className="py-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto relative">
-    <FadeUp className="text-center mb-20">
-      <span className="text-[10px] tracking-[0.2em] uppercase font-sans text-gray-400 mb-6 block">How We Work</span>
-      <h2 className="font-serif text-3xl lg:text-4xl text-charcoal">A Process as Considered as the Result</h2>
+  <section className="py-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto">
+    <FadeUp className="mb-24 text-center">
+      <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-6 block">How We Work</span>
+      <h2 className="font-serif text-4xl lg:text-5xl">A Process as Considered as the Result</h2>
     </FadeUp>
-    <div className="absolute left-1/2 top-[200px] bottom-0 w-[1px] bg-gray-100 hidden lg:block -translate-x-1/2"></div>
-    
-    <div className="space-y-[80px]">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div className="lg:col-span-5 text-left lg:text-right lg:pr-16">
-          <FadeUp>
-            <span className="font-serif text-6xl text-gray-200 block mb-4">01</span>
-            <h3 className="font-serif text-3xl mb-4">Discovery</h3>
-            <p className="text-gray-500 text-sm leading-relaxed">We begin by listening. Understanding your rituals, your aspirations, and the unique context of the site.</p>
-          </FadeUp>
+    <div className="relative">
+      <div className="absolute left-1/2 top-0 bottom-0 w-[1px] bg-gray-100 hidden lg:block -translate-x-1/2"></div>
+      
+      <div className="space-y-[80px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-5 text-left lg:text-right lg:pr-16">
+            <FadeUp>
+              <span className="font-serif text-6xl text-gray-200 block mb-4">01</span>
+              <h3 className="font-serif text-3xl mb-4">Discovery</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">We begin by listening. Understanding your rituals, your aspirations, and the unique context of the site.</p>
+            </FadeUp>
+          </div>
+          <div className="lg:col-span-2 hidden lg:flex justify-center relative">
+            <div className="w-3 h-3 rounded-full bg-charcoal z-10"></div>
+          </div>
+          <div className="lg:col-span-5">
+            <FadeUp delay={0.2}>
+              <img src="https://picsum.photos/seed/process1/600/400" alt="Discovery" className="w-full aspect-[3/2] object-cover" referrerPolicy="no-referrer" />
+            </FadeUp>
+          </div>
         </div>
-        <div className="lg:col-span-2 hidden lg:flex justify-center relative">
-          <div className="w-3 h-3 rounded-full bg-charcoal z-10"></div>
-        </div>
-        <div className="lg:col-span-5">
-          <FadeUp delay={0.2}>
-            <img src="https://picsum.photos/seed/process1/600/400" alt="Discovery" className="w-full aspect-[3/2] object-cover" referrerPolicy="no-referrer" />
-          </FadeUp>
-        </div>
-      </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div className="lg:col-span-5 order-3 lg:order-1">
-          <FadeUp delay={0.2}>
-            <img src="https://picsum.photos/seed/process2/600/400" alt="Concept" className="w-full aspect-[3/2] object-cover" referrerPolicy="no-referrer" />
-          </FadeUp>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-5 order-3 lg:order-1">
+            <FadeUp delay={0.2}>
+              <img src="https://picsum.photos/seed/process2/600/400" alt="Concept" className="w-full aspect-[3/2] object-cover" referrerPolicy="no-referrer" />
+            </FadeUp>
+          </div>
+          <div className="lg:col-span-2 hidden lg:flex justify-center relative order-2">
+            <div className="w-3 h-3 rounded-full bg-charcoal z-10"></div>
+          </div>
+          <div className="lg:col-span-5 lg:pl-16 order-1 lg:order-3">
+            <FadeUp>
+              <span className="font-serif text-6xl text-gray-200 block mb-4">02</span>
+              <h3 className="font-serif text-3xl mb-4">Concept</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">Translating insights into spatial narratives. We explore materiality, light, and volume through sketches and models.</p>
+            </FadeUp>
+          </div>
         </div>
-        <div className="lg:col-span-2 hidden lg:flex justify-center relative order-2">
-          <div className="w-3 h-3 rounded-full bg-charcoal z-10"></div>
-        </div>
-        <div className="lg:col-span-5 lg:pl-16 order-1 lg:order-3">
-          <FadeUp>
-            <span className="font-serif text-6xl text-gray-200 block mb-4">02</span>
-            <h3 className="font-serif text-3xl mb-4">Concept</h3>
-            <p className="text-gray-500 text-sm leading-relaxed">Translating insights into spatial narratives. We explore materiality, light, and volume through sketches and models.</p>
-          </FadeUp>
-        </div>
-      </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div className="lg:col-span-5 text-left lg:text-right lg:pr-16">
-          <FadeUp>
-            <span className="font-serif text-6xl text-gray-200 block mb-4">03</span>
-            <h3 className="font-serif text-3xl mb-4">Craft</h3>
-            <p className="text-gray-500 text-sm leading-relaxed">The execution phase is where precision meets artistry. We collaborate with master artisans and builders to bring the design to life with uncompromising quality.</p>
-          </FadeUp>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-5 text-left lg:text-right lg:pr-16">
+            <FadeUp>
+              <span className="font-serif text-6xl text-gray-200 block mb-4">03</span>
+              <h3 className="font-serif text-3xl mb-4">Execution</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">Meticulous project management and collaboration with master craftsmen to bring the vision to life.</p>
+            </FadeUp>
+          </div>
+          <div className="lg:col-span-2 hidden lg:flex justify-center relative">
+            <div className="w-3 h-3 rounded-full bg-charcoal z-10"></div>
+          </div>
+          <div className="lg:col-span-5">
+            <FadeUp delay={0.2}>
+              <img src="https://picsum.photos/seed/process3/600/400" alt="Execution" className="w-full aspect-[3/2] object-cover" referrerPolicy="no-referrer" />
+            </FadeUp>
+          </div>
         </div>
-        <div className="lg:col-span-2 hidden lg:flex justify-center relative">
-          <div className="w-3 h-3 rounded-full bg-charcoal z-10"></div>
-        </div>
-        <div className="lg:col-span-5">
-          <FadeUp delay={0.2}>
-            <img src="https://picsum.photos/seed/process3/600/400" alt="Craft" className="w-full aspect-[3/2] object-cover" referrerPolicy="no-referrer" />
-          </FadeUp>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-5 order-3 lg:order-1">
+            <FadeUp delay={0.2}>
+              <img src="https://picsum.photos/seed/process4/600/400" alt="Handover" className="w-full aspect-[3/2] object-cover" referrerPolicy="no-referrer" />
+            </FadeUp>
+          </div>
+          <div className="lg:col-span-2 hidden lg:flex justify-center relative order-2">
+            <div className="w-3 h-3 rounded-full bg-charcoal z-10"></div>
+          </div>
+          <div className="lg:col-span-5 lg:pl-16 order-1 lg:order-3">
+            <FadeUp>
+              <span className="font-serif text-6xl text-gray-200 block mb-4">04</span>
+              <h3 className="font-serif text-3xl mb-4">Handover</h3>
+              <p className="text-gray-500 text-sm leading-relaxed">The final layer of styling. Placing art, arranging furniture, and ensuring every detail is perfect before welcoming you home.</p>
+            </FadeUp>
+          </div>
         </div>
       </div>
     </div>
@@ -336,8 +354,7 @@ const Materials = () => (
 const Testimonials = () => (
   <section className="py-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto">
     <FadeUp className="mb-16">
-      <span className="text-[10px] tracking-[0.2em] uppercase font-sans text-gray-400 mb-6 block">Client Voices</span>
-      <h2 className="font-serif text-3xl lg:text-4xl text-charcoal">What Our Clients Say</h2>
+      <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 block">Client Voices</span>
     </FadeUp>
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
       <div className="lg:col-span-5">
@@ -405,9 +422,9 @@ const CTA = () => (
       <div className="lg:col-span-3"></div>
       <div className="lg:col-span-9">
         <FadeUp>
-          <span className="text-[10px] tracking-[0.2em] uppercase font-sans text-gray-400 mb-6 block">Let's Begin</span>
+          <span className="text-xs tracking-[0.2em] uppercase font-semibold text-gray-400 mb-6 block">Let's Begin</span>
           <h2 className="font-serif text-5xl lg:text-7xl leading-[1.1] tracking-tight text-charcoal mb-12">
-            Ready to Transform<br />Your Space?
+            Ready to transform<br />your space?
           </h2>
           <a href="#contact" className="inline-flex items-center gap-4 text-lg tracking-widest uppercase font-medium border-b-2 border-charcoal pb-2 hover:text-gray-500 hover:border-gray-500 transition-colors">
             Inquire Now <ArrowRight size={20} />
@@ -470,8 +487,12 @@ const Footer = () => (
       </div>
       <div className="lg:col-span-3 flex flex-col gap-4">
         <h4 className="text-xs tracking-widest uppercase text-gray-500 mb-2">Navigation</h4>
-        {['Home', 'Studio', 'Portfolio', 'Journal', 'Contact'].map(link => (
-          <a key={link} href={`#${link.toLowerCase()}`} className="text-sm hover:text-gray-400 transition-colors">{link}</a>
+        {['Home', 'Studio', 'Portfolio', 'Wardrobes', 'Journal', 'Contact'].map(link => (
+          link === 'Wardrobes' ? (
+            <Link key={link} to="/wardrobe" className="text-sm hover:text-gray-400 transition-colors">{link}</Link>
+          ) : (
+            <a key={link} href={`#${link.toLowerCase()}`} className="text-sm hover:text-gray-400 transition-colors">{link}</a>
+          )
         ))}
       </div>
       <div className="lg:col-span-2 flex flex-col gap-4">
@@ -508,7 +529,7 @@ const HomePage = () => (
     <Hero />
     <BrandIntro />
     <Services />
-    <WardrobeSection />
+    <WardrobeSection isCompact={true} showCtaButton={true} />
     <FeaturedProject />
     <Projects />
     <Process />
@@ -526,6 +547,7 @@ import PortfolioPage from './pages/PortfolioPage';
 import AboutPage from './pages/AboutPage';
 import JournalPage from './pages/JournalPage';
 import ContactPage from './pages/ContactPage';
+import WardrobePage from './pages/WardrobePage';
 
 // const ServicesPage = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">Services</h1></main>;
 // const PortfolioPage = () => <main className="min-h-screen pt-[120px] px-8 lg:px-16 max-w-[1440px] mx-auto"><h1 className="font-serif text-4xl">Portfolio</h1></main>;
@@ -545,6 +567,7 @@ export default function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/journal" element={<JournalPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/wardrobe" element={<WardrobePage />} />
         </Routes>
         <Footer />
       </div>
